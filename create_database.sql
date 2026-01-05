@@ -1,4 +1,4 @@
-drop database projetofinal;
+##drop database projetofinal;
 create database projetofinal;
 use projetofinal;
 
