@@ -19,6 +19,7 @@ public class api_db {
       // localhost - acesso local
       // 3306 - porta
       // cadastro - base de dados a acessar
+	  Properties props = new Properties();
 	  String servidor = "";
       String usuario = "";
       String senha = "";
@@ -34,7 +35,6 @@ public class api_db {
 	  switch (opcao) {
 		  case 1:
 			  // Aiven
-			  Properties props = new Properties();
 		      servidor = "jdbc:mysql://mysql-1fad3a13-shaolin-2d8a.i.aivencloud.com:11894/cadusuario";
 		      usuario = "avnadmin";
 		      senha = props.getProperty("aiven.senha");
@@ -44,21 +44,21 @@ public class api_db {
 			  // Jeronimo
 		      servidor = "jdbc:mysql://10.18.0.158:3306/projetofinal";
 		      usuario = "usuario";
-		      senha = "102030";
+		      senha = props.getProperty("jeronimo.senha");
 		      driver = "com.mysql.cj.jdbc.Driver";
 			  break;
 		  case 3:
 			  // Lucas
 		      servidor = "jdbc:mysql://localhost:3306/projetofinal";
 		      usuario = "root";
-		      senha = "Deusefamilia26";
+		      senha = props.getProperty("lucas.senha");
 		      driver = "com.mysql.cj.jdbc.Driver";
 			  break;
 		  case 4:
 			  // Jairo
 		      servidor = "jdbc:mysql://localhost:3306/projetofinal";
 		      usuario = "root";
-		      senha = "jairo1rj";
+		      senha = props.getProperty("jairo.senha");
 		      driver = "com.mysql.cj.jdbc.Driver";
 			  break;
 
