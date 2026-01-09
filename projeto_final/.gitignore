@@ -1,0 +1,12 @@
+
+/tokens/
+
+config.properties
+.env
+
+
+bin/
+*.class
+.settings/
+.project
+.classpath
