@@ -1,4 +1,5 @@
 package projeto_final;
+import java.io.FileInputStream;
 import java.sql.Connection; // Gerencia a conexão
 import java.sql.DriverManager; // Gerencia o driver
 import java.sql.ResultSet; // Consulta, retorna, armazena e imprime dados de DBs
@@ -20,6 +21,14 @@ public class api_db {
       // 3306 - porta
       // cadastro - base de dados a acessar
 	  Properties props = new Properties();
+	  try {
+          FileInputStream fis = new FileInputStream("config.properties");
+          props.load(fis);
+          fis.close();
+      } catch (Exception e) {
+          System.out.println("Erro ao carregar arquivo de configuração: " + e.getMessage());
+          return; // Interrompe se não conseguir ler as senhas
+      }
 	  String servidor = "";
       String usuario = "";
       String senha = "";
@@ -31,6 +40,7 @@ public class api_db {
 				+ "3 - Lucas\n"
 				+ "4 - Jairo");
 	  int opcao = input.nextInt();
+	  input.close();
 	  
 	  switch (opcao) {
 		  case 1:
@@ -42,7 +52,7 @@ public class api_db {
 			  break;
 		  case 2:
 			  // Jeronimo
-		      servidor = "jdbc:mysql://10.18.0.158:3306/projetofinal";
+		      servidor = "jdbc:mysql://localhost:3306/projetofinal";
 		      usuario = "usuario";
 		      senha = props.getProperty("jeronimo.senha");
 		      driver = "com.mysql.cj.jdbc.Driver";
@@ -65,7 +75,7 @@ public class api_db {
 		   default:
 			  break;
 	  }
-	  input.close();
+
       
       try {
           Class.forName(driver);

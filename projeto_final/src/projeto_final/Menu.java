@@ -45,6 +45,7 @@ public class Menu {
 		} else {
             System.out.println("Não foi possível conectar ao banco de dados");
         }
+		input.close();
 		
 	}
 		
