@@ -1,5 +1,4 @@
-##drop database projetofinal;
-  
+#drop database projetofinal;
 create database projetofinal;
 use projetofinal;
 
@@ -9,12 +8,11 @@ nome_parceiro varchar(255),
 contato char(14)
 );
 
-create table armazenamento(
-id_armazenamento int primary key auto_increment,
-galpao varchar(3),
-rua int,
-num int,
-altura int
+CREATE TABLE armazenamento (
+id_armazenamento char(2) PRIMARY KEY,
+linha INT NOT NULL,
+coluna CHAR(1) NOT NULL,
+o_v ENUM('Ocupado', 'Vazio') DEFAULT 'Vazio'
 );
 
 create table pedidos(
@@ -31,7 +29,7 @@ nome_produto varchar(255),
 cod_produto varchar(255),
 peso_total decimal(10,2),
 id_pedido int,
-id_armazenamento int,
+id_armazenamento char(2),
 foreign key(id_pedido) references pedidos(id_pedido) on delete restrict,
 foreign key(id_armazenamento) references armazenamento(id_armazenamento) on delete restrict
 );
